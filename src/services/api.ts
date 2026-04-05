@@ -1,0 +1,24 @@
+import axios from 'axios';
+
+const API_BASE = 'http://localhost:8000/api'; // Change to Laravel port
+
+interface AxiosRequestConfig {
+  headers?: Record<string, string>;
+}
+
+const api = axios.create({
+  baseURL: API_BASE,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export default api;

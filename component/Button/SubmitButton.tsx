@@ -1,0 +1,30 @@
+import type { FC } from "react";
+
+interface  SubmitButtonProps {
+    label:string;
+    newClassName:? string;
+    className?: string;
+} 
+
+const SubmitButton: FC<SubmitButtonProps> = ({
+    label,
+    newClassName,
+    className,
+})  => {
+  return (
+    <>
+    <button
+      type="submit"
+      className={'${
+        newClassName
+            ? newClassName
+            : 'px-4 py 3 bg-green-600 hover:bg-green-700 text-white text-sm font-medium  cursor-pointer rounded-1g shadow-1g ${className}' 
+        }''}
+      >
+      {label}
+      </button>
+      </>
+  );
+};
+
+export default SubmitButton

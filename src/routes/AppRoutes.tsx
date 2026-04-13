@@ -1,26 +1,22 @@
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "../layout/AppLayout";
 import RequireAuth from "../components/RequireAuth";
-import LoginPage from "../pages/Login";
-import GenderMain from "../pages/Gender/MainPage";
-import UserMain from "../pages/User/MainPage";
 
-const SampleComponent = () => {
-  return (
-    <>
-      <h1 className="text-2xl font-bold text-blue-600 p-8">Welcome to RNLAct Demo</h1>
-    </>
-  );
-};
+const Home = () => (
+  <div className="p-4">
+    <h1 className="text-4xl font-bold text-gray-900 mb-4">Hello World</h1>
+    <p className="text-gray-600">RNLAct Demo Dashboard with Flowbite layout.</p>
+  </div>
+);
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route element={<RequireAuth><AppLayout /></RequireAuth>} >
-        <Route path="/" element={<SampleComponent />} />
-        <Route path="/genders" element={<GenderMain />} />
-        <Route path="/users" element={<UserMain />} />
+      <Route element={<RequireAuth />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/genders" element={<Home />} />
+        <Route path="/users" element={<Home />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );

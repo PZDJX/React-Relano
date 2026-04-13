@@ -7,7 +7,7 @@ import React, {
 
 type HeaderContextType = {
   isOpen: boolean;
-  toggleHeader: () => void;
+  toggleUserMenu: () => void;
 };
 
 const HeaderContext = createContext<HeaderContextType | undefined>(undefined);
@@ -16,7 +16,7 @@ export const useHeader = () => {
   const context = useContext(HeaderContext);
 
   if (!context) {
-    throw new Error('Header must be used within a HeaderProvider');
+    throw new Error('useHeader must be used within a HeaderProvider');
   }
 
   return context;
@@ -27,15 +27,16 @@ interface HeaderProviderProps {
 }
 
 export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleHeader = () => {
+  const toggleUserMenu = () => {
     setIsOpen((prev) => !prev);
   };
 
   return (
-    <HeaderContext.Provider value={{ isOpen, toggleHeader }}>
+    <HeaderContext.Provider value={{ isOpen, toggleUserMenu }}>
       {children}
     </HeaderContext.Provider>
   );
 };
+

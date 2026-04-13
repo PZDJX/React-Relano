@@ -7,14 +7,12 @@ import { HeaderProvider } from "../context/HeaderContext";
 const LayoutContent = () => {
   return (
     <>
-      <div>
-        <AppSidebar />
-      </div>
-      <div>
-        <AppHeader />
-      </div>
-      <div className="p-6 md:ml-64">
-        <Outlet />
+      <AppSidebar />
+      <AppHeader />
+      <div className="p-4 sm:ml-64">
+        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+          <Outlet />
+        </div>
       </div>
     </>
   );
@@ -31,3 +29,4 @@ const AppLayout = () => {
 };
 
 export default AppLayout;
+
